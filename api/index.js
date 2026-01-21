@@ -2,18 +2,18 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const userRoutes = require('./routes/userroutes');
-const signupRoutes = require('./routes/signuproutes');
-const loginRoutes = require('./routes/loginroutes');
-const homeRoutes = require('./routes/homeroutes');
-const refreshRoutes = require('./routes/refreshroutes');
-const blogRoutes = require('./routes/blogroutes');
-const wordofdayroutes = require('./routes/wordofdayroutes');
-const tagRoutes = require('./routes/tagroutes');
-const connectDB = require("./mongodb");
-const commentRoutes = require('./routes/commentroutes');
-const likeRoutes = require('./routes/likeroutes');
-const forgotpswdroutes = require('./routes/forgotpswdroutes');
+const userRoutes = require('../routes/userroutes');
+const signupRoutes = require('../routes/signuproutes');
+const loginRoutes = require('../routes/loginroutes');
+const homeRoutes = require('../routes/homeroutes');
+const refreshRoutes = require('../routes/refreshroutes');
+const blogRoutes = require('../routes/blogroutes');
+const wordofdayroutes = require('../routes/wordofdayroutes');
+const tagRoutes = require('../routes/tagroutes');
+const connectDB = require("../mongodb");
+const commentRoutes = require('../routes/commentroutes');
+const likeRoutes = require('../routes/likeroutes');
+const forgotpswdroutes = require('../routes/forgotpswdroutes');
 
 //load env vars
 dotenv.config();
@@ -38,9 +38,9 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server started on port ${PORT}`);
+// })
 
 app.set('view engine','hbs');
 app.use(bodyParser.json());
@@ -55,3 +55,5 @@ app.use('/',homeRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/bloglikes', likeRoutes);
 app.use('/api/forgotpswd', forgotpswdroutes);
+
+module.exports = app;
